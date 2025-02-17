@@ -215,36 +215,44 @@ export default function Home() {
         </div>
 
 
-        <div className="relative w-screen h-screen flex items-center justify-center overflow-hidden">
-      <div className="flex w-full items-center">
-        <div className="marquee flex space-x-8">
-          <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
-          <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
-        </div>
-      </div>
-
-      {/* Tailwind Custom Styles */}
-      <style jsx>{`
-        .marquee {
-          display: flex;
-          animation: marquee 5s linear infinite;
-        }
-        
-        @keyframes marquee {
-          from {
-            transform: translateX(0%);
-          }
-          to {
-            transform: translateX(-100%);
-          }
-        }
-      `}</style>
+        <div className="relative w-screen  flex items-center justify-center overflow-hidden">
+  <div className="flex w-full  overflow-hidden">
+    <div className="marquee flex ">
+      {/* Duplicate images to ensure smooth scrolling */}
+      <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
+      <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
+      <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
+      <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
+      <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
+      <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/Catalogue_brand_family_banner-federalist-pig.png?w=1000&amp;fit=max&amp;auto=compress,format&amp;h=1000" alt="Brand" className="w-auto h-auto object-contain" />
     </div>
+  </div>
 
+  {/* Tailwind Custom Styles */}
+  <style jsx>{`
+    .marquee {
+      display: flex;
+      width: 200%; /* Ensuring continuous flow */
+      animation: marquee 20s linear infinite;
+    }
+    
+    @keyframes marquee {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-50%); /* Move only half to loop seamlessly */
+      }
+    }
+  `}</style>
+  </div>
+  <div className="">
+    <h4 className="text-black">Manage Consent Preferences</h4>
+  </div>
 
       
 
-    </>
+  </>
     
   );
 }
