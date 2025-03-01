@@ -6,7 +6,7 @@ import {faInstagram} from "@fortawesome/free-brands-svg-icons";
 const Footer = () => {
   return (
     <>
-      <div className="absolute bottom-0 h-[15vh] w-screen bg-black pt-2 flex flex-row">
+      <div className="h-[15vh] w-screen bg-black pt-2 flex flex-row">
         <div className="ml-10 cursor-pointer">
           <FontAwesomeIcon icon={faFacebook} className="text-3xl pr-3 text-yellow-400" />
           <FontAwesomeIcon icon={faInstagram} className="text-3xl text-yellow-400" />

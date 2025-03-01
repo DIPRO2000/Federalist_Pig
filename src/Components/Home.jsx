@@ -215,7 +215,7 @@ export default function Home() {
         </div>
 
 
-        <div className="relative w-screen  flex items-center justify-center overflow-hidden">
+  <div className="relative w-screen  flex items-center justify-center overflow-x-hidden">
   <div className="flex w-full  overflow-hidden">
     <div className="marquee flex ">
       {/* Duplicate images to ensure smooth scrolling */}
@@ -246,12 +246,9 @@ export default function Home() {
     }
   `}</style>
   </div>
-  <div className="">
-    <h4 className="text-black">Manage Consent Preferences</h4>
+  <div className="flex justify-center pt-3 pb-3 bg-yellow-500">
+    <h4 className="text-black underline hover:text-gray-800"><a href="#">Manage Consent Preferences</a></h4>
   </div>
-
-      
-
   </>
     
   );
