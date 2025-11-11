@@ -16,7 +16,7 @@ import Catering from './Pages/Catering/Catering.jsx'
 
 const router=createBrowserRouter([
     {
-      path:'/',
+      path:'/', 
       element:<Layout/>,
       children:[
         {
