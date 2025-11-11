@@ -6,11 +6,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Home.jsx'
 import Layout from './Components/Layout.jsx'
 import Menus from './Pages/Menu Components/Menus.jsx'
-import Catering from './Pages/Menu Components/Catering.jsx'
+// import Catering from './Pages/Menu Components/Catering.jsx'
 import Caterings from './Pages/Caterings.jsx'
 import Bbq_box from './Pages/BBQ_BOX.jsx'
 import Supper from './Pages/Supper_club.jsx'
 import Privacy from './Pages/Footer components/Privacy.jsx'
+import Catering from './Pages/Catering/Catering.jsx'
 
 
 const router=createBrowserRouter([
@@ -43,9 +44,12 @@ const router=createBrowserRouter([
           path:"/privacy",
           element:<Privacy/>
         },
+        {
+          path:"/catering",
+          element:<Catering/>
+        },
       ]
     }
-
 ])
 
 
