@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-import { motion } from "framer-motion";
 
 const images = [
   "https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/36463220826_FedPig_A6_FavFootball_0219.jpg?w=1200&fit=crop&auto=compress,format&cs=origin&crop=focalpoint&fp-x=0.5&fp-y=0.5",
@@ -42,20 +41,21 @@ export default function Home() {
   const imgref=useRef(null);
   const svgref1=useRef(null);
   const svgref2=useRef(null);
+  const svgref3=useRef(null);
 
   const initial="M 30 80 Q 80 80 1300 80";
   let final="M 30 80 Q 80 80 1300 80";
 
   const mouseLocation=(e)=>{
       final=`M 30 80 Q ${e.nativeEvent.offsetX} ${e.nativeEvent.offsetY} 1300 80`
-      gsap.to([svgref1.current,svgref2.current], {
+      gsap.to([svgref1.current,svgref2.current,svgref3.current], {
             attr:{d:final},
             duration:0.2
         });
       };
   
   const mouseleave=()=>{
-    gsap.to([svgref1.current,svgref2.current],{
+    gsap.to([svgref1.current,svgref2.current,svgref3.current],{
         attr:{d:initial},
         duration:1,
         ease:"elastic.out(1.2,0.3)",
@@ -64,7 +64,7 @@ export default function Home() {
 
   useEffect(() => {
 
-    gsap.set([svgref1.current,svgref2.current], { attr: { d: initial } });
+    gsap.set([svgref1.current,svgref2.current,svgref3.current], { attr: { d: initial } });
   }, []);
   
   
@@ -134,7 +134,7 @@ export default function Home() {
               </p>
               <button
                 ref={btnref}
-                className="p-2 px-5 mt-7 font-bold border-yellow-500 border-2 text-yellow-500 hover:text-black hover:bg-yellow-500 hover:rounded-md"
+                className="p-2 px-5 mt-7 font-bold border-[#ffd601] border-2 text-[#ffd601] hover:text-black hover:bg-[#ffd601] hover:rounded-md"
               >
                 {btn[current]}
               </button>
@@ -160,29 +160,34 @@ export default function Home() {
 
 
 
-        <div className="flex flex-row gap-32 p-20 bg-yellow-500">
+        <div className="flex flex-row gap-32 px-20 pt-16 bg-[#ffd601]">
           <div className="">
               <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/85291IMG_3966_web.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5" className="w-96 h-80 rounded-2xl mx-auto"/>
               <h1 className="text-5xl font-serif text-center m-4">SPECIALS</h1>
               <p className="text-xl font-bold text-center m-4">Pitmaster Rob is always up to something! Check out our rotating specialty sandwiches and limited drops, including a Limited Time Only Monthly Chef's Special that will leave you craving for more!</p>
-              <div className="flex justify-center"><button className="text-black border-black font-bold border-2 p-2 px-4 hover:text-yellow-500 hover:bg-black">SEE THE SPECIALS</button></div>
+              <div className="flex justify-center"><button className="text-black border-black font-bold border-2 p-2 px-4 hover:text-[#ffd601] hover:bg-black">SEE THE SPECIALS</button></div>
               
           </div>
           <div className="">
               <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/98058IMG_1800.JPG?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5" className="w-96 h-80 rounded-2xl mx-auto"/>
               <h1 className="text-5xl font-serif text-center m-4">SUPPER CLUB</h1>
               <p className="text-xl font-bold text-center m-4">Once a month, Chef & Pitmaster Rob Sonderman presents a new 4-course dine-in experience that goes beyond our regular offerings and puts a smoky spin on gourmet cuisine.</p>
-              <div className="flex justify-center"><button className="text-black border-black font-bold border-2 p-2 px-4 hover:text-yellow-500 hover:bg-black">GET YOUR TICKETS</button></div>
+              <div className="flex justify-center"><button className="text-black border-black font-bold border-2 p-2 px-4 hover:text-[#ffd601] hover:bg-black">GET YOUR TICKETS</button></div>
           </div>
         </div>
 
+        <div className="w-full overflow-hidden" onMouseMove={mouseLocation} onMouseLeave={mouseleave}>
+          <svg className="bg-[#ffd601]" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+            <path ref={svgref3} d="M 30 80 Q 80 -1000 1300 80" stroke="black" fill="transparent" stroke-width="3"/>
+          </svg>
+        </div>
 
-        <div className="grid grid-cols-3 gap-32 items-center bg-yellow-500">
+        <div className="grid grid-cols-3 gap-32 items-center bg-[#ffd601]">
           <div className="col-span-1 pl-10">
               <h1 className="text-5xl font-serif font-bold text-center">MENU</h1>
               <p className="p-5 text-center font-bold">We’re craft American BBQ made in-house (always). Get traditions and favorites from all over the world — all on one plate. Federalist Pig is a two-time Michelin Bib Gourmand winner serving up DC’s best blend of the classic BBQ traditions you’d find at the most elite cookout and the elevated flavors you’d find at a true fine dining spot.</p>
               <p className="p-3 text-center font-bold">Everything we serve is house-made and prepared by a staff that cares. You could spend a lifetime sampling every flavor combination at Federalist Pig, and we hope you do.</p>
-              <div className="flex justify-center"><button className="p-2 px-4 mt-7 font-bold border-black border-2 text-black hover:text-yellow-500 hover:bg-black hover:rounded-md">PEEP THE MENU</button></div>
+              <div className="flex justify-center"><button className="p-2 px-4 mt-7 font-bold border-black border-2 text-black hover:text-[#ffd601] hover:bg-black hover:rounded-md">PEEP THE MENU</button></div>
           </div>
           <div className="col-span-2">
               <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/58030220826_FedPig_A7_BCRcombo1_0264.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5" className="w-auto h-auto  rounded-2xl"/>
@@ -191,25 +196,25 @@ export default function Home() {
 
         
         <div className="w-full" onMouseMove={mouseLocation} onMouseLeave={mouseleave}>
-          <svg className="bg-yellow-500" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+          <svg className="bg-[#ffd601]" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
             <path ref={svgref1} d="M 30 80 Q 80 -1000 1300 80" stroke="black" fill="transparent" stroke-width="3"/>
           </svg>
         </div>
 
 
-        <div className="grid grid-cols-3 gap-20 items-center bg-yellow-500">
+        <div className="grid grid-cols-3 gap-20 items-center bg-[#ffd601]">
           <div className="col-span-2">
               <img src="https://images.getbento.com/accounts/22022076ca31682d32e6a3253b8e9e7c/media/images/58030220826_FedPig_A7_BCRcombo1_0264.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5" className="w-auto h-auto  rounded-2xl"/>
           </div>
           <div className="col-span-1 pr-10">
               <h1 className="text-5xl font-serif font-bold text-center">Catering</h1>
               <p className="p-5 text-center font-bold">We'll bring the 'que to you! From backyard BBQs, holiday celebrations or hundred-person events, our Barbecrew and catering truck can do it all. Serving thoughtfully crafted sides, vegan and vegetarian options, to the BBQ classics from all the regions of America, and all the corners of the globe — it’s all here.</p>
-              <div className="flex justify-center"><button className="p-2 px-4 mt-7 font-bold border-black border-2 text-black hover:text-yellow-500 hover:bg-black hover:rounded-md">EXPLORE CATERING</button></div>
+              <div className="flex justify-center"><button className="p-2 px-4 mt-7 font-bold border-black border-2 text-black hover:text-[#ffd601] hover:bg-black hover:rounded-md">EXPLORE CATERING</button></div>
           </div>
         </div>
 
         <div className="w-full overflow-hidden" onMouseMove={mouseLocation} onMouseLeave={mouseleave}>
-          <svg className="bg-yellow-500" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+          <svg className="bg-[#ffd601]" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
             <path ref={svgref2} d="M 30 80 Q 80 -1000 1300 80" stroke="black" fill="transparent" stroke-width="3"/>
           </svg>
         </div>
@@ -246,7 +251,7 @@ export default function Home() {
     }
   `}</style>
   </div>
-  <div className="flex justify-center pt-3 pb-3 bg-yellow-500">
+  <div className="flex justify-center pt-3 pb-3 bg-[#ffd601]">
     <h4 className="text-black underline hover:text-gray-800"><a href="#">Manage Consent Preferences</a></h4>
   </div>
   </>
